@@ -92,7 +92,7 @@ we get rid of the NA's. You should recognize the "pipe operator" `%>%` from the 
 # Your code here
 library(palmerpenguins)
 penguins <- na.omit(penguins)
-data(penguins
+data(penguins)
 ```
 
 
