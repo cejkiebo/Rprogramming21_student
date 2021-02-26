@@ -1,8 +1,10 @@
 ---
 title: "Lecture 1"
-subtitle: "Penguins visualisation"
 author: "Misja Mikkers and Gertjan Verhoeven"
-output: html_notebook
+subtitle: Penguins visualisation
+output:
+  html_document:
+    df_print: paged
 ---
 
 # Introduction
@@ -29,7 +31,8 @@ This error message means that you did not install the package `palmerpenguins`. 
 
 ```{r}
 # Your code here
-
+library(tidyverse)
+library(palmerpenguins)
 ```
 
 
@@ -52,7 +55,8 @@ We will only use the first data set (penguins). You can have a look at the datas
 ```{r}
 
 data("penguins")
-
+head(penguins)
+tail(penguins)
 ```
 
 ```{r}
@@ -66,7 +70,7 @@ The dataset contains 8 variables about 344 individual penguins. If you want to k
 
 ```{r}
 # Your code here to explore the penguins dataset
-
+?penguins
 ```
 
 
@@ -86,7 +90,9 @@ we get rid of the NA's. You should recognize the "pipe operator" `%>%` from the 
 ```{r}
 
 # Your code here
-
+library(palmerpenguins)
+penguins <- na.omit(penguins)
+data(penguins
 ```
 
 
@@ -150,7 +156,8 @@ In that case we can plot the data as a scatterplot (`geom_point()`)with
 
 ```{r}
 # Here your code
-
+ggplot() +
+  geom_point(data = penguins, aes(x = flipper_length_mm, y = bill_length_mm))
 ```
 
 
@@ -166,8 +173,9 @@ We could experiment a bit with adding colors and shapes to this plot by trying t
 ```{r}
 
 # Here your code
-
-
+ggplot() +
+  geom_point(data = penguins, aes(x = flipper_length_mm, y = bill_length_mm, color = "red", size = 3, shape = 1)) +
+  scale_shape_identity()
 ```
 
 
@@ -181,7 +189,8 @@ It seems that there is a positive correlation between flipper length and bill le
 
 ```{r}
 # Here your code
-
+ggplot() +
+  geom_point(data = penguins, aes(x = flipper_length_mm, y = bill_length_mm, colour = species, shape = sex))
 ```
 
 
@@ -200,9 +209,18 @@ Finally,  we can add a theme (you can find some examples at https://ggplot2.tidy
 
 
 ```{r}
-
+ggplot(penguins, aes(x = flipper_length_mm,
+                     y = bill_length_mm,
+                     colour = species,
+                     shape = sex)) +
+       labs(title = "Correlation between flipper length and bill length",
+            subtitle = "Plot by Chris",
+            x = "Flipper length",
+            y = "Bill length",
+            caption = "Source: Penguins") +
+  geom_point() +
+  theme_bw()
 # Here your code
-
 ```
 
 
@@ -231,7 +249,12 @@ We can split the plots per island by using for example
 
 ```{r}
 # Here your code
-
+ggplot(penguins, aes(x = species,
+                     y = body_mass_g,
+                     fill = sex)) +
+  labs(y = "body mass in grams") +
+  geom_boxplot() +
+  facet_wrap(~ island)
 
 ```
 
@@ -255,6 +278,13 @@ _hint_: Why does scale_color_manual not work?
 
 ```{r}
 # Here your code
+ggplot(penguins, aes(x = species,
+                     y = body_mass_g,
+                     fill = sex)) +
+  labs(y = "body mass in grams") +
+  geom_boxplot() +
+  facet_wrap(~ island) +
+  scale_fill_manual(values = c("#DA020E", "mediumblue"))
 
 
 ```
