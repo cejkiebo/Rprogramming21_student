@@ -1,7 +1,9 @@
 ---
 title: "Data wrangling with dplyr"
 author: "Misja Mikkers and Gertjan Verhoeven"
-output: html_notebook
+output:
+  pdf_document: default
+  html_notebook: default
 ---
 
 
@@ -46,8 +48,9 @@ Please load the packages "tidyverse" en "gapminder". We also will use `ggrepel`
 
 ```{r}
 # Here your code
-
-
+library(tidyverse)
+library(gapminder)
+library(ggrepel)
 ```
 
 
@@ -90,8 +93,11 @@ Assignment:
 
 ```{r}
 # Here your code
+Countries <- c("Netherlands", "Belgium", "Germany", "France", "United Kingdom")
 
-
+df1 <- gapminder %>%
+  filter(country == Countries)
+df1
 ```
 
 
