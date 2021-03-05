@@ -2,8 +2,10 @@
 title: "Data wrangling with dplyr"
 author: "Misja Mikkers and Gertjan Verhoeven"
 output:
-  pdf_document: default
+  html_document:
+    df_print: paged
   html_notebook: default
+  pdf_document: default
 ---
 
 
@@ -51,6 +53,7 @@ Please load the packages "tidyverse" en "gapminder". We also will use `ggrepel`
 library(tidyverse)
 library(gapminder)
 library(ggrepel)
+library(ggthemes)
 ```
 
 
@@ -95,8 +98,7 @@ Assignment:
 # Here your code
 Countries <- c("Netherlands", "Belgium", "Germany", "France", "United Kingdom")
 
-df1 <- gapminder %>%
-  filter(country == Countries)
+df1 <- subset(gapminder, subset = country %in% Countries)
 df1
 ```
 
@@ -109,8 +111,9 @@ Now we can make a lineplot of df1 with year on the x-axis and lifeExp on the y-a
 
 ```{r}
 # Here your code
-
-
+ggplot(df1, aes(x = year, y = lifeExp, by=country)) +
+  geom_line(aes(color=country)) +
+  theme_economist()
 ```
 
 
@@ -162,7 +165,8 @@ Assignment:
 ```{r}
 
 # Here your code
-
+df2 <- gapminder %>%
+  mutate(Netherlands = as.factor(ifelse(country == "Netherlands", 1, 0)))
 
 ```
 
@@ -180,8 +184,15 @@ _hint_ : don't forget to add a nice theme.
 
 ```{r}
 # Here your code
-
-
+ggplot(df2, aes(x = year,
+                y = lifeExp,
+                group = country)) +
+  geom_line(aes(colour = Netherlands, alpha = Netherlands)) +
+  scale_colour_manual(values = c("0" = "grey",
+                                 "1" = "red")) +
+  scale_alpha_manual(values = c("1" = 1,
+                                "0" = 0.3)) +
+  theme_bw()
 ```
 
 
@@ -206,7 +217,11 @@ _hint_: check `?select` for help if needed.
 
 ```{r}
 # Here your code
-
+df3 <- gapminder %>%
+  select(contains(c("o", "year"))) %>%
+  arrange(desc(pop)) %>%
+  mutate(ranking = 1:length(country)) %>%
+  filter(ranking %in% c(27, 531))
 
 ```
 
@@ -244,7 +259,11 @@ Assignment:
 
 ```{r}
 # Here your code
-
+df4 <- gapminder %>%
+  filter(year == 2007) %>%
+  group_by(continent) %>%
+  summarise(Mean_LE = weighted.mean(lifeExp, pop), Mean_GDP = weighted.mean(gdpPercap, pop)) %>%
+  arrange(desc(Mean_GDP))
 
 ```
 
@@ -278,8 +297,21 @@ _hint 3_: You need to change some labels. To get the line breaks in the legend, 
 
 ```{r}
 # Here your code
-
-
+ggplot() +
+  geom_point(data = df4, aes(x = Mean_LE,
+                             y = reorder(continent, Mean_GDP),
+                             size = Mean_GDP),
+             colour = "blue") +
+  geom_segment(data = df4, aes(x = 0,
+                               xend = Mean_LE,
+                               y = continent,
+                               yend = continent),
+               colour = "blue") +
+  theme_bw() +
+  labs(caption = "source: gapminder dataset",
+       x = "Weighted mean of life expectancy",
+       y = "",
+       size = "Weighted mean of GDP per capita")
 ```
 
 
@@ -300,8 +332,35 @@ Hints:
 
 ```{r}
 # Here your code
+withlabel <- c("Guinea-Bissau", "Swaziland", "India", "Pakistan", "China", "Mexico", "Chile", "United States", "Netherlands", "United States", "Spain", "Japan")
 
 
+dfLabeled <- gapminder %>%
+  filter(year == 2007 & country %in% withlabel)
+
+dfUnlabeled <- gapminder %>%
+  filter(year == 2007 & !country %in% withlabel)
+
+ggplot(data=dfLabeled, aes(x = log(gdpPercap),
+                      y = lifeExp,
+                      colour = continent,
+                      size = pop,
+                      label = country)) +
+  geom_point(data = dfUnlabeled, aes(x = log(gdpPercap),
+                                     y = lifeExp,
+                                     colour = continent,
+                                     size = pop)) +
+  geom_point() +
+  geom_text_repel(color = "Black",
+                  size = 3,
+                  min.segment.length = unit(0, "lines"),
+                  nudge_y = .2) +
+  theme_bw() +
+  labs(caption = "source: gapminder",
+       x = "Log of GDP per capita",
+       y = "Life expectancy",
+       colour = "Continent",
+       size = "Population")
 ```
 
 
