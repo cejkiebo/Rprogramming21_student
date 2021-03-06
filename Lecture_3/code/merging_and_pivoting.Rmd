@@ -1,7 +1,9 @@
 ---
-title: "Data wrangling: merging and pivoting"
+title: 'Data wrangling: merging and pivoting'
 author: "Misja Mikkers and Gertjan Verhoeven"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 
@@ -19,7 +21,9 @@ Load these packages:
 
 ```{r}
 # Here your code
-
+library(tidyverse)
+library(readxl)
+library(ggthemes)
 ```
 
 
@@ -95,7 +99,8 @@ Try to do this and look at the result:
 
 ```{r}
 # Here your code
-
+merged_dataframe <- merge(data1, data2)
+print(merged_dataframe)
 ```
 
 
@@ -112,8 +117,8 @@ Try `merged_dataframe <- full_join(your_first_data_frame, your_second_dataframe,
 
 ```{r}
 # Here your code
-
-
+merged_dataframe <- full_join(data1, data2)
+print(merged_dataframe)
 ```
 
 
@@ -127,7 +132,7 @@ Now try the command  `inner_join()` and inspect the results:
 
 ```{r}
 # Here your code
-
+inner_dataframe <- inner_join(data1, data2)
 ```
 
 
@@ -140,7 +145,7 @@ Inspect the results of `left_join()` and try to see what happens if you change t
 
 ```{r}
 # Here your code
-
+left_dataframe <- left_join(data1, data2)
 
 ```
 
@@ -152,7 +157,7 @@ Try `right_join()` as the mirror of `left_join()` and inspect the result.
 
 ```{r}
 # Here your code
-
+right_dataframe <- right_join(data1, data2)
 
 ```
 
@@ -169,7 +174,7 @@ Inspect the results of `anti_join()`
 
 ```{r}
 # Here your code
-
+anti_dataframe <- anti_join(merged_dataframe, data1)
 
 ```
 
@@ -184,7 +189,7 @@ The `semi_join()` command returns all hospitals present in the first and the sec
 ```{r}
 
 # Here your code
-
+semi_join(data1, data2)
 
 ```
 
@@ -212,7 +217,7 @@ And now try to use `name_of_your_merged_dataframe <- cbind(data1, data2a)`
 
 ```{r}
 # Here your code
-
+cbind_dataframe <- cbind(data1, data2a)
 
 ```
 
@@ -238,7 +243,7 @@ Now try to paste the second dataframe to the first one, using `rbind()`.
 
 ```{r}
 # Here your code
-
+rbind_row <- rbind(data1a, data1)
 
 ```
 
@@ -296,8 +301,14 @@ _hint_: You could use `filter()`, however in this case `slice()` could be a good
 ```{r}
 
 # Here your code
-
-
+healthstats <- read_xls("../sourcedata/OECD-Health-Statistics-2020-Frequently-Requested-Data.xls",
+                        sheet = 3,
+                        skip = 3) %>%
+  rename(Country = "...1",
+         `2019` = "2019...51") %>%
+  select(Country | `2011`:`2019`) %>%
+  slice_head(n = 5)
+healthstats
 ```
 
 
@@ -341,8 +352,11 @@ _hint_: Remember that colum names with numbers should be written as `2011` to pr
 ```{r}
 
 # Here your code
-
-
+df2 <- pivot_longer(healthstats,
+                    cols = `2011`:`2019`,
+                    names_to = "Year",
+                    values_to = "Expenditure")
+df2
 ```
 
 
@@ -385,7 +399,15 @@ Don't forget change the labels and the x-axis and choose a theme of your liking.
 
 ```{r}
 # Here your code
-
+ggplot(data = df2,
+       aes(x = as.integer(Year),
+           y = Expenditure,
+           colour = Country)) +
+  geom_line() +
+  theme_economist() +
+  labs(x = NULL,
+       y = "Expenditure per capita in PPP") +
+  scale_x_continuous(breaks = 2011:2019)
 
 ```
 
@@ -402,7 +424,8 @@ Make a new data frame df3, based on df2 with only the observations of the year 2
 ```{r}
 
 # Here your code
-
+df3 <- df2 %>%
+  filter(between(Year, 2018, 2019))
 
 ```
 
@@ -430,7 +453,9 @@ Make a new wide data frame df4 which looks like table above based on the long da
 
 ```{r}
 # Here your code
-
+df4 <- df3 %>%
+  pivot_wider(names_from = Year,
+              values_from = Expenditure)
 
 
 ```
@@ -446,7 +471,9 @@ _hint_ note the `` around the variable names.
 
 ```{r}
 # Here your code
-
+df4 <- df4 %>%
+  mutate(Growth = (`2019` - `2018`)/`2018`) %>%
+  arrange(desc(Growth))
 
 ```
 
@@ -461,7 +488,14 @@ Recreate this plot:
 
 ```{r}
 # Here your code
-
+ggplot(df4,
+       aes(x = reorder(Country,
+                       -Growth),
+           y = Growth,
+           fill = Country)) +
+  geom_col(show.legend = FALSE) +
+  theme_bw() +
+  labs(x = NULL)
 
 
 ```
