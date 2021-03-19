@@ -1,10 +1,17 @@
 ---
 title: "Lecture 4"
-author: "Misja Mikkers and Gertjan Verhoeven"
-subtitle: "R Markdown: reproducible presentations & reports from R"
-output: html_notebook
+author: "me"
+date: "19-3-2021"
+output:
+  pdf_document: default
+  html_notebook: default
 urlcolor: blue
+subtitle: 'R Markdown: reproducible presentations & reports from R'
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
 
 # Packages
 
@@ -119,6 +126,7 @@ The dataset `mtcars` contains `r nrow(mtcars)` records of car models.
 
 Now preview the document: what happened to the R code?
 
+it was executed
 
 ### Chunk options
 
@@ -147,9 +155,9 @@ ggplot(mtcars, aes(x =  mpg)) +
 
 Sometimes you want all chunks in a document to have the same chunk options, for example, you only want the **output** of each chunk and not the code itself displayed in the final output. Use this code chunk at the top of your document to set chunk options for all chunks that follow it.
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+#```{r setup, include=FALSE}
+#knitr::opts_chunk$set(echo = FALSE)
+#```
 
 # Other formats: PDF report
 

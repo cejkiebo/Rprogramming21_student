@@ -192,7 +192,7 @@ Create a function that for the numbers _x_ to _x + 10_ calls the function `squar
   total <- 0
 
   for (i in x:(x+10)) {
-    total <- square_plus(i)
+    total <- total + square_plus(i)
   }
 
 

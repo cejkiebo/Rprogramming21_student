@@ -3,8 +3,8 @@ title: "Lecture 4"
 author: "Misja Mikkers and Gertjan Verhoeven"
 subtitle: Markdown exercises
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 In this notebook we will exercise using Markdown to format our documents.
@@ -44,28 +44,35 @@ But it is also possible to add structure to the text:
 
 ### Lists
 
+Four spaces for sub-items
+
 ```
 * unordered list 
 * item 2
-  + sub-item 1
-  + sub-item 2
+    + sub-item 1
+    + sub-item 2
   
 1. ordered list
 2. item 2
-  + sub-item 1
-  + sub-item 2
+    a) sub-item 1
+    b) sub-item 2
 ```
 
 **Exercise**:
 
 Now try to make a list of main points (1,2,3) and sub-points (3a, 3b) and knit to see the result.
 
+1. main
+2. also main
+3. more main
+    + sub 1
+    + sub 2
 
 ### Text formatting
 
 **Exercise**:
 
-Make one word in this sentence bold.
+Make one **word** in this sentence bold.
 
 
 ### Tables
@@ -83,9 +90,13 @@ a. Copy this table
 b. Add a line with your own name
 c. Add a column with the title `Role` and fill in the roles after the names (valid roles are teacher, student, or teaching assistant)
 
+First name | Surname | Role |
+----------- | ------------ | ------------ |
+Gertjan | Verhoeven | Teaching assistant |
+Misja | Mikkers | Teacher |
+Chris | van den Kieboom | Student |
 
 ## Hyperlinks and images
-
 
 ### Hyperlinks
 
@@ -94,13 +105,15 @@ c. Add a column with the title `Role` and fill in the roles after the names (val
 
 Insert a hyperlink to the Tilburg University website.
 
+[Tilburg University](https://www.tilburguniversity.edu)
 
 ### Pictures
-
 
 **Exercise**:
 
 Insert the photo of Donald Knuth, the inventor of a predecessor of R Notebooks. The photo is in the images folder.
+
+![](./images/knuth.jpeg)
 
 ### Formulas
 
@@ -108,12 +121,13 @@ Write this image as an inline formula:
 
 ![](images/formula.png)
 
+$a^2 + b^2 = c^2$
+
 ### Starting a new page
 
 You can force a pagebreak (new page) using this command.
 This only works when you convert to PDF.
 
 \newpage
-
 
 # End of this notebook
