@@ -1,8 +1,10 @@
 ---
 title: "Lecture 5"
-subtitle: "Simulation-based Statistics"
 author: "Misja Mikkers and Gertjan Verhoeven"
-output: html_notebook
+subtitle: Simulation-based Statistics
+output:
+  html_document:
+    df_print: paged
 ---
 
 # Packages
@@ -52,6 +54,16 @@ Finally, calculate the mean height by sex group.
 
 ```{r}
 # your code here
+ggplot(df, aes(x = height)) +
+  geom_histogram()
+
+ggplot(df, aes(x = height)) +
+  geom_histogram() +
+  facet_wrap(~ sex)
+
+df %>%
+  group_by(sex) %>%
+  summarise(height = mean(height))
 ```
 
 
@@ -90,6 +102,8 @@ Use the `sd()` function.
 
 ```{r}
 # your code here
+mean(df$height)
+sd(df$height)
 ```
 
 
@@ -109,6 +123,10 @@ Finally, plot a histogram of these 10.000 numbers. Play around with the number o
 set.seed(123)
 
 # your code here
+dist <- data.frame(random = rnorm(10000, mean = 181, sd = 10))
+
+ggplot(dist, aes(x = random)) +
+  geom_histogram(binwidth = 10)
 ```
 
 
@@ -134,6 +152,8 @@ Calculate the mean for these 10 datapoints.
 set.seed(123)
 
 # your code here
+sample_heights <- rnorm(10, mean = mean(df$height), sd = sd(df$height))
+mean(sample_heights)
 ```
 
 
@@ -148,10 +168,17 @@ Plot a histogram with these 10000 means.
 ```{r}
 # your code here
 mean_vals <- c()
+set.seed(123)
 
-for (i in ...){
-  mean_vals[i] <- mean(...)
+for (i in 1:10000){
+  sample_heights <- rnorm(10, mean = mean(df$height), sd = sd(df$height))
+  mean_vals[i] <- mean(sample_heights)
 }
+
+data.frame(mean_vals) %>%
+  ggplot(aes(x = mean_vals)) +
+    geom_histogram()
+
 ```
 
 
@@ -170,6 +197,27 @@ use `geom_vline()` for this.
 
 ```{r}
 # your code here
+realdata <- df %>%
+  group_by(sex) %>%
+  summarise(height = mean(height))
+#or use pull()
+
+df.realdata <- data.frame(realdata)
+
+mean_vals <- c()
+set.seed(123)
+
+for (i in 1:10000){
+  sample_heights <- rnorm(10, mean = mean(df$height), sd = sd(df$height))
+  mean_vals[i] <- mean(sample_heights)
+}
+
+ggplot() +
+  geom_histogram(data = data.frame(mean_vals), aes(x = mean_vals)) +
+  geom_vline(xintercept = df.realdata$height,
+             colour = "red")
+
+
 ```
 
 
