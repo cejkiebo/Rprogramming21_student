@@ -1743,81 +1743,106 @@ pre code {
 <h1>Packages needed</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHJlYWR4bClcbmxpYnJhcnkod3JpdGV4bClcbmxpYnJhcnkocGFsbWVycGVuZ3VpbnMpXG5saWJyYXJ5KGdhcG1pbmRlcilcbmBgYCJ9 -->
-<pre class="r"><code>library(tidyverse)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHJlYWR4bClcbmxpYnJhcnkod3JpdGV4bClcbmxpYnJhcnkocGFsbWVycGVuZ3VpbnMpXG5saWJyYXJ5KGdhcG1pbmRlcilcbmBgYFxuYGBgIn0= -->
+<pre class="r"><code>```r
+library(tidyverse)
 library(readxl)
 library(writexl)
 library(palmerpenguins)
 library(gapminder)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="introduction" class="section level1">
-<h1>Introduction</h1>
-<p>In this pdf we will show you examples of exam questions.</p>
-</div>
-<div id="assignment-0" class="section level1">
-<h1>Assignment 0</h1>
-<p>Pull the repository <a href="https://github.com/misjamikkers/Rprogramming21_student" class="uri">https://github.com/misjamikkers/Rprogramming21_student</a> to find the data needed for the exam, the exam and the answers.</p>
-</div>
-<div id="question-1" class="section level1">
-<h1>Question 1</h1>
-<p>In the Sourcedata folder (and on Canvas) you will find the excelfile with the name dataQ1.xlsx</p>
-<p>Your task is to</p>
-<ol style="list-style-type: decimal">
-<li>read this data into a R notebook</li>
-<li>keep the rows of Group1</li>
-<li>make a scatterplot with Variable_1 on the x-axis and Variable_2 on the y_axis</li>
-</ol>
-<p>Which figure do you recognize in the graph?</p>
-<ol style="list-style-type: lower-alpha">
-<li>Dinosaur</li>
-<li>Heart</li>
-<li>the letter “L”</li>
-<li>the number “1”</li>
-</ol>
-</div>
-<div id="question-2" class="section level1">
-<h1>Question 2</h1>
-<p>Your task is to</p>
-<ul>
-<li>use the penguins data from the palmerpenguins package</li>
-<li>keep the rows with year 2009</li>
-<li>create a boxplot with on the x-axis Species per sex and on the y-axis body_mass_g.</li>
-</ul>
-<p>Which species per sex has the highest median body mass?</p>
-<ol style="list-style-type: lower-alpha">
-<li>females of the Adelie species</li>
-<li>males of the Adelie species</li>
-<li>females of the Chinstrap species</li>
-<li>males of the Chinstrap species</li>
-<li>females of the Gentoo species</li>
-<li>males of the Gentoo species</li>
-<li>the NA group</li>
-</ol>
-</div>
-<div id="question-3" class="section level1">
-<h1>Question 3</h1>
-<p>Your task is</p>
-<ul>
-<li>use the data of the gapminder package</li>
-<li>keep the rows of year 2007</li>
-<li>calculate the medium life expectancy (lifeExp) per continent</li>
-</ul>
-<p>What is the median life expectancy of Oceania? Round your answer to the nearest integer.</p>
-</div>
-<div id="question-4a" class="section level1">
-<h1>Question 4a</h1>
-<p>Your task is to</p>
-<ul>
-<li>Copy the code below (NOTE: include the set.seed!!!) into a notebook</li>
-<li>Use left_join to merge m1 and m2 (in that order!) in to a dataframe with the name “m3”</li>
-</ul>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5zZXQuc2VlZCgxMjMpXG5cbm0xIDwtIHRpYmJsZShpZCA9IHNhbXBsZSh4PSAxOjEwMCwgc2l6ZSA9IDcwLCByZXBsYWNlID0gVFJVRSkpICU+JVxuICBtdXRhdGUoeCA9IHJub3JtKG4gPSBsZW5ndGgoaWQpLCBtZWFuID0gMCwgc2QgPSAxKSlcblxubTIgPC0gdGliYmxlKGlkID0gc2FtcGxlKHg9IDE6MTAwLCBzaXplID0gODAsIHJlcGxhY2UgPSBUUlVFKSkgJT4lXG4gIG11dGF0ZSh5ID0gcm5vcm0obiA9IGxlbmd0aChpZCksIG1lYW4gPSAxMCwgc2QgPSA1ICkpXG5cblxuYGBgIn0= -->
-<pre class="r"><code>
+<pre><code>
+&lt;!-- rnb-source-end --&gt;
+
+&lt;!-- rnb-chunk-end --&gt;
+
+
+&lt;!-- rnb-text-begin --&gt;
+
+
+# Introduction
+
+In this pdf we will show you examples of exam questions.
+
+
+# Assignment 0
+
+Pull the repository https://github.com/misjamikkers/Rprogramming21_student to find the data needed for the exam, the exam and the answers.
+
+
+# Question 1
+
+
+In the Sourcedata folder (and on Canvas) you will find the excelfile with the name dataQ1.xlsx
+
+Your task is to 
+
+1. read this data into a R notebook
+2. keep the rows of Group1
+3. make a scatterplot with Variable_1 on the x-axis and Variable_2 on the y_axis
+
+Which figure do you recognize in the graph?
+
+a. Dinosaur
+b. Heart
+c. the letter &quot;L&quot;
+d. the number &quot;1&quot;
+
+
+
+# Question 2
+
+Your task is to
+
+- use the penguins data from the palmerpenguins package
+- keep the rows with year 2009
+- create a boxplot with on the x-axis Species per sex and on the y-axis body_mass_g.
+
+Which species per sex has the highest median body mass?
+
+a. females of the Adelie species
+b. males of the Adelie species
+c. females of the Chinstrap species
+d. males of the Chinstrap species
+e. females of the Gentoo species
+f. males of the Gentoo species
+g. the NA group
+
+
+# Question 3
+
+Your task is 
+
+- use the data of the gapminder package
+- keep the rows of year 2007
+- calculate the medium life expectancy (lifeExp) per continent
+
+What is the median life expectancy of Oceania?
+Round your answer to the nearest integer.
+
+
+
+
+# Question 4a
+
+Your task is to
+
+- Copy the code below (NOTE: include the set.seed!!!) into a notebook
+- Use left_join to merge m1 and m2 (in that order!) in to a dataframe with the name &quot;m3&quot;
+
+
+
+
+&lt;!-- rnb-text-end --&gt;
+
+
+&lt;!-- rnb-chunk-begin --&gt;
+
+
+&lt;!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYGBgclxuXG5zZXQuc2VlZCgxMjMpXG5cbm0xIDwtIHRpYmJsZShpZCA9IHNhbXBsZSh4PSAxOjEwMCwgc2l6ZSA9IDcwLCByZXBsYWNlID0gVFJVRSkpICU+JVxuICBtdXRhdGUoeCA9IHJub3JtKG4gPSBsZW5ndGgoaWQpLCBtZWFuID0gMCwgc2QgPSAxKSlcblxubTIgPC0gdGliYmxlKGlkID0gc2FtcGxlKHg9IDE6MTAwLCBzaXplID0gODAsIHJlcGxhY2UgPSBUUlVFKSkgJT4lXG4gIG11dGF0ZSh5ID0gcm5vcm0obiA9IGxlbmd0aChpZCksIG1lYW4gPSAxMCwgc2QgPSA1ICkpXG5cblxuYGBgXG5gYGAifQ== --&gt;
+
+```r
+```r
+
 set.seed(123)
 
 m1 &lt;- tibble(id = sample(x= 1:100, size = 70, replace = TRUE)) %&gt;%
@@ -1826,6 +1851,7 @@ m1 &lt;- tibble(id = sample(x= 1:100, size = 70, replace = TRUE)) %&gt;%
 m2 &lt;- tibble(id = sample(x= 1:100, size = 80, replace = TRUE)) %&gt;%
   mutate(y = rnorm(n = length(id), mean = 10, sd = 5 ))
 </code></pre>
+<p>```</p>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1902,11 +1928,11 @@ m2 &lt;- tibble(id = sample(x= 1:100, size = 80, replace = TRUE)) %&gt;%
 <div id="question-7" class="section level1">
 <h1>Question 7</h1>
 <p>Create a function that for the numbers x to x + 2 * <span class="math inline">\(\pi\)</span> calls the function <code>sin(x)</code> and adds the results.</p>
-<p>The answer should be 0.9878401</p>
+<p>The answer when you execute your function with the argument 3 should be 0.9878401</p>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlByYWN0aWNlIGZvciBFeGFtLCBBbnN3ZXJzIg0KYXV0aG9yOiAiTWlzamEgTWlra2VycywgR2VydGphbiBWZXJob2V2ZW4gJiBIYXMgdmFuIFZsb2tob3ZlbiINCm91dHB1dDoNCiAgcGRmX2RvY3VtZW50OiBkZWZhdWx0DQogIGh0bWxfbm90ZWJvb2s6IGRlZmF1bHQNCi0tLQ0KDQojIFBhY2thZ2VzIG5lZWRlZA0KDQpgYGB7ciwgd2FybmluZz1GQUxTRSwgbWVzc2FnZT1GQUxTRX0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShyZWFkeGwpDQpsaWJyYXJ5KHdyaXRleGwpDQpsaWJyYXJ5KHBhbG1lcnBlbmd1aW5zKQ0KbGlicmFyeShnYXBtaW5kZXIpDQpgYGANCg0KIyBJbnRyb2R1Y3Rpb24NCg0KSW4gdGhpcyBwZGYgd2Ugd2lsbCBzaG93IHlvdSBleGFtcGxlcyBvZiBleGFtIHF1ZXN0aW9ucy4NCg0KDQojIEFzc2lnbm1lbnQgMA0KDQpQdWxsIHRoZSByZXBvc2l0b3J5IGh0dHBzOi8vZ2l0aHViLmNvbS9taXNqYW1pa2tlcnMvUnByb2dyYW1taW5nMjFfc3R1ZGVudCB0byBmaW5kIHRoZSBkYXRhIG5lZWRlZCBmb3IgdGhlIGV4YW0sIHRoZSBleGFtIGFuZCB0aGUgYW5zd2Vycy4NCg0KDQojIFF1ZXN0aW9uIDENCg0KDQpJbiB0aGUgU291cmNlZGF0YSBmb2xkZXIgKGFuZCBvbiBDYW52YXMpIHlvdSB3aWxsIGZpbmQgdGhlIGV4Y2VsZmlsZSB3aXRoIHRoZSBuYW1lIGRhdGFRMS54bHN4DQoNCllvdXIgdGFzayBpcyB0byANCg0KMS4gcmVhZCB0aGlzIGRhdGEgaW50byBhIFIgbm90ZWJvb2sNCjIuIGtlZXAgdGhlIHJvd3Mgb2YgR3JvdXAxDQozLiBtYWtlIGEgc2NhdHRlcnBsb3Qgd2l0aCBWYXJpYWJsZV8xIG9uIHRoZSB4LWF4aXMgYW5kIFZhcmlhYmxlXzIgb24gdGhlIHlfYXhpcw0KDQpXaGljaCBmaWd1cmUgZG8geW91IHJlY29nbml6ZSBpbiB0aGUgZ3JhcGg/DQoNCmEuIERpbm9zYXVyDQpiLiBIZWFydA0KYy4gdGhlIGxldHRlciAiTCINCmQuIHRoZSBudW1iZXIgIjEiDQoNCg0KDQojIFF1ZXN0aW9uIDINCg0KWW91ciB0YXNrIGlzIHRvDQoNCi0gdXNlIHRoZSBwZW5ndWlucyBkYXRhIGZyb20gdGhlIHBhbG1lcnBlbmd1aW5zIHBhY2thZ2UNCi0ga2VlcCB0aGUgcm93cyB3aXRoIHllYXIgMjAwOQ0KLSBjcmVhdGUgYSBib3hwbG90IHdpdGggb24gdGhlIHgtYXhpcyBTcGVjaWVzIHBlciBzZXggYW5kIG9uIHRoZSB5LWF4aXMgYm9keV9tYXNzX2cuDQoNCldoaWNoIHNwZWNpZXMgcGVyIHNleCBoYXMgdGhlIGhpZ2hlc3QgbWVkaWFuIGJvZHkgbWFzcz8NCg0KYS4gZmVtYWxlcyBvZiB0aGUgQWRlbGllIHNwZWNpZXMNCmIuIG1hbGVzIG9mIHRoZSBBZGVsaWUgc3BlY2llcw0KYy4gZmVtYWxlcyBvZiB0aGUgQ2hpbnN0cmFwIHNwZWNpZXMNCmQuIG1hbGVzIG9mIHRoZSBDaGluc3RyYXAgc3BlY2llcw0KZS4gZmVtYWxlcyBvZiB0aGUgR2VudG9vIHNwZWNpZXMNCmYuIG1hbGVzIG9mIHRoZSBHZW50b28gc3BlY2llcw0KZy4gdGhlIE5BIGdyb3VwDQoNCg0KIyBRdWVzdGlvbiAzDQoNCllvdXIgdGFzayBpcyANCg0KLSB1c2UgdGhlIGRhdGEgb2YgdGhlIGdhcG1pbmRlciBwYWNrYWdlDQotIGtlZXAgdGhlIHJvd3Mgb2YgeWVhciAyMDA3DQotIGNhbGN1bGF0ZSB0aGUgbWVkaXVtIGxpZmUgZXhwZWN0YW5jeSAobGlmZUV4cCkgcGVyIGNvbnRpbmVudA0KDQpXaGF0IGlzIHRoZSBtZWRpYW4gbGlmZSBleHBlY3RhbmN5IG9mIE9jZWFuaWE/DQpSb3VuZCB5b3VyIGFuc3dlciB0byB0aGUgbmVhcmVzdCBpbnRlZ2VyLg0KDQoNCg0KDQojIFF1ZXN0aW9uIDRhDQoNCllvdXIgdGFzayBpcyB0bw0KDQotIENvcHkgdGhlIGNvZGUgYmVsb3cgKE5PVEU6IGluY2x1ZGUgdGhlIHNldC5zZWVkISEhKSBpbnRvIGEgbm90ZWJvb2sNCi0gVXNlIGxlZnRfam9pbiB0byBtZXJnZSBtMSBhbmQgbTIgKGluIHRoYXQgb3JkZXIhKSBpbiB0byBhIGRhdGFmcmFtZSB3aXRoIHRoZSBuYW1lICJtMyINCg0KDQoNCmBgYHtyfQ0KDQpzZXQuc2VlZCgxMjMpDQoNCm0xIDwtIHRpYmJsZShpZCA9IHNhbXBsZSh4PSAxOjEwMCwgc2l6ZSA9IDcwLCByZXBsYWNlID0gVFJVRSkpICU+JQ0KICBtdXRhdGUoeCA9IHJub3JtKG4gPSBsZW5ndGgoaWQpLCBtZWFuID0gMCwgc2QgPSAxKSkNCg0KbTIgPC0gdGliYmxlKGlkID0gc2FtcGxlKHg9IDE6MTAwLCBzaXplID0gODAsIHJlcGxhY2UgPSBUUlVFKSkgJT4lDQogIG11dGF0ZSh5ID0gcm5vcm0obiA9IGxlbmd0aChpZCksIG1lYW4gPSAxMCwgc2QgPSA1ICkpDQoNCg0KYGBgDQoNCg0KDQoNCkhvdyBtYW55IG9ic2VydmF0aW9ucyAocm93cykgZG9lcyBtMyBoYXZlPw0KDQoNCiMjIFF1ZXN0aW9uIDRiDQoNCllvdXIgdGFzayBpcyB0byB1c2UgbTMgZnJvbSBxdWVzdGlvbiA0YSB0bw0KDQotIGNyZWF0ZSBhIGxvbmcgZGF0YWZyYW1lIG00IHdpdGggYSBuZXcgY29sdW0gIlZhciIgdGhhdCBpbmRpY2F0ZXMgd2hldGhlciB0aGUgcm93IGNvbmNlcm5lZCBzaG93cyBhIHZhbHVlIG9mICJ4IiBvciAieSIgYW5kIHRoZSB2YWx1ZXMgaW4gY29sdW1uICJWYWwiLg0KDQpTbyB5b3VyIGRhdGFmcmFtZSBzaG91bGQgbG9vayBsaWtlOg0KDQoNCnxpZHxWYXJ8VmFsfA0KfC0tLXwtLS18LS0tLXwNCnwzMXwgeHwgLTAuMTYzOTMxMHwNCnwzMXwgeXwgMTQuMzk2ODIwN3wNCnwuLi58Li4ufC4uLi58DQp8Li4uLnwuLi58Li4uLnwNCg0KDQotIFRoZW4gZGVsZXRlIGFsbCBOQSdzLg0KDQoNCkhvdyBtYW55IG9ic2VydmF0aW9ucyAocm93cykgZG9lcyBtNCBoYXZlPw0KDQoNCg0KDQojIFF1ZXN0aW9uIDUNCg0KDQpXaGF0IGRvZXMgdGhpcyBjb2RlIGRvPw0KDQpga25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBGQUxTRSlgDQoNCg0KYS4gVGhlIGNvZGUgbWFrZXMgc3VyZSB0aGF0IHRoaXMgY29kZSBjaHVuayB3aWxsIG5vdCBiZSBleGVjdXRlZA0KYi4gVGhlIGNvZGUgbWFrZXMgc3VyZSB0aGF0IGFsbCB0aGUgY29kZSBjaHVua3MgYWZ0ZXIgdGhpcyBjb21tYW5kIGluIHRoZSBSbWQgd2lsbCBub3QgYmUgZXhlY3V0ZWQNCmMuIFRoZSBjb2RlIG1ha2VzIHN1cmUgdGhhdCB0aGlzIGNvZGUgY2h1bmsgd2lsbCBub3QgYmUgc2hvd24gaW4gdGhlIG91dHB1dCBkb2N1bWVudCAoZS5nLiB0aGUgcGRmKQ0KZC4gVGhlIGNvZGUgbWFrZXMgc3VyZSB0aGF0IGFsbCB0aGUgY29kZSBjaHVua3MgYWZ0ZXIgdGhpcyBjaHVuayB3aWxsIG5vdCBiZSBzaG93biBpbiB0aGUgb3V0cHV0IGRvY3VtZW50IChlLmcuIHRoZSBwZGYpIA0KDQoNCg0KDQojIFF1ZXN0aW9uIDYNCg0KWW91ciB0YXNrIGlzIHRvDQoNCi0gb3BlbiBhIG5vdGVib29rDQotIHNpbXVsYXRlIHNvbWUgZGF0YToNCiAgICAtIFVTRSBgc2V0LnNlZWQoMTIzKWAgW1RoaXMgaXMgcmVhbGx5IGltcG9ydGFudCFdDQogICAgLSBnZW5lcmF0ZSBhbiB4LXZhcmlhYmxlIGluIGEgdGliYmxlIHdpdGggYSBub3JtYWwgZGlzdHJpYnV0aW9uIHdpdGggbWVhbiAxMDAsIGFuZCBzdGFuZGFyZCBkZXZpYXRpb24gMTAuIFdlIG5lZWQgMTAwMCBvYnNlcnZhdGlvbnMNCiAgICAtIG1ha2UgYSBuZXcgY29sdW1uIHkgd2l0aCB0aGUgZm9ybXVsYSAkbG9nKHgpICsgMzYgKiB4XjUkDQogICAgLSBjYWxjdWxhdGUgdGhlIG1lYW4gb2YgdGhlIHZhcmlhYmxlIHkuDQoNCg0KDQoNCiMgUXVlc3Rpb24gNw0KDQpDcmVhdGUgYSBmdW5jdGlvbiB0aGF0IGZvciB0aGUgbnVtYmVycyB4IHRvIHggKyAyICogJFxwaSQgY2FsbHMgdGhlIGZ1bmN0aW9uIGBzaW4oeClgIGFuZCBhZGRzIHRoZSByZXN1bHRzLg0KDQpUaGUgYW5zd2VyIHNob3VsZCBiZSAwLjk4Nzg0MDENCg0KDQoNCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlByYWN0aWNlIGZvciBFeGFtLCBBbnN3ZXJzIg0KYXV0aG9yOiAiTWlzamEgTWlra2VycywgR2VydGphbiBWZXJob2V2ZW4gJiBIYXMgdmFuIFZsb2tob3ZlbiINCm91dHB1dDoNCiAgcGRmX2RvY3VtZW50OiBkZWZhdWx0DQogIGh0bWxfbm90ZWJvb2s6IGRlZmF1bHQNCi0tLQ0KDQojIFBhY2thZ2VzIG5lZWRlZA0KDQpgYGB7ciwgd2FybmluZz1GQUxTRSwgbWVzc2FnZT1GQUxTRX0NCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShyZWFkeGwpDQpsaWJyYXJ5KHdyaXRleGwpDQpsaWJyYXJ5KHBhbG1lcnBlbmd1aW5zKQ0KbGlicmFyeShnYXBtaW5kZXIpDQpgYGANCg0KIyBJbnRyb2R1Y3Rpb24NCg0KSW4gdGhpcyBwZGYgd2Ugd2lsbCBzaG93IHlvdSBleGFtcGxlcyBvZiBleGFtIHF1ZXN0aW9ucy4NCg0KDQojIEFzc2lnbm1lbnQgMA0KDQpQdWxsIHRoZSByZXBvc2l0b3J5IGh0dHBzOi8vZ2l0aHViLmNvbS9taXNqYW1pa2tlcnMvUnByb2dyYW1taW5nMjFfc3R1ZGVudCB0byBmaW5kIHRoZSBkYXRhIG5lZWRlZCBmb3IgdGhlIGV4YW0sIHRoZSBleGFtIGFuZCB0aGUgYW5zd2Vycy4NCg0KDQojIFF1ZXN0aW9uIDENCg0KDQpJbiB0aGUgU291cmNlZGF0YSBmb2xkZXIgKGFuZCBvbiBDYW52YXMpIHlvdSB3aWxsIGZpbmQgdGhlIGV4Y2VsZmlsZSB3aXRoIHRoZSBuYW1lIGRhdGFRMS54bHN4DQoNCllvdXIgdGFzayBpcyB0byANCg0KMS4gcmVhZCB0aGlzIGRhdGEgaW50byBhIFIgbm90ZWJvb2sNCjIuIGtlZXAgdGhlIHJvd3Mgb2YgR3JvdXAxDQozLiBtYWtlIGEgc2NhdHRlcnBsb3Qgd2l0aCBWYXJpYWJsZV8xIG9uIHRoZSB4LWF4aXMgYW5kIFZhcmlhYmxlXzIgb24gdGhlIHlfYXhpcw0KDQpXaGljaCBmaWd1cmUgZG8geW91IHJlY29nbml6ZSBpbiB0aGUgZ3JhcGg/DQoNCmEuIERpbm9zYXVyDQpiLiBIZWFydA0KYy4gdGhlIGxldHRlciAiTCINCmQuIHRoZSBudW1iZXIgIjEiDQoNCg0KDQojIFF1ZXN0aW9uIDINCg0KWW91ciB0YXNrIGlzIHRvDQoNCi0gdXNlIHRoZSBwZW5ndWlucyBkYXRhIGZyb20gdGhlIHBhbG1lcnBlbmd1aW5zIHBhY2thZ2UNCi0ga2VlcCB0aGUgcm93cyB3aXRoIHllYXIgMjAwOQ0KLSBjcmVhdGUgYSBib3hwbG90IHdpdGggb24gdGhlIHgtYXhpcyBTcGVjaWVzIHBlciBzZXggYW5kIG9uIHRoZSB5LWF4aXMgYm9keV9tYXNzX2cuDQoNCldoaWNoIHNwZWNpZXMgcGVyIHNleCBoYXMgdGhlIGhpZ2hlc3QgbWVkaWFuIGJvZHkgbWFzcz8NCg0KYS4gZmVtYWxlcyBvZiB0aGUgQWRlbGllIHNwZWNpZXMNCmIuIG1hbGVzIG9mIHRoZSBBZGVsaWUgc3BlY2llcw0KYy4gZmVtYWxlcyBvZiB0aGUgQ2hpbnN0cmFwIHNwZWNpZXMNCmQuIG1hbGVzIG9mIHRoZSBDaGluc3RyYXAgc3BlY2llcw0KZS4gZmVtYWxlcyBvZiB0aGUgR2VudG9vIHNwZWNpZXMNCmYuIG1hbGVzIG9mIHRoZSBHZW50b28gc3BlY2llcw0KZy4gdGhlIE5BIGdyb3VwDQoNCg0KIyBRdWVzdGlvbiAzDQoNCllvdXIgdGFzayBpcyANCg0KLSB1c2UgdGhlIGRhdGEgb2YgdGhlIGdhcG1pbmRlciBwYWNrYWdlDQotIGtlZXAgdGhlIHJvd3Mgb2YgeWVhciAyMDA3DQotIGNhbGN1bGF0ZSB0aGUgbWVkaXVtIGxpZmUgZXhwZWN0YW5jeSAobGlmZUV4cCkgcGVyIGNvbnRpbmVudA0KDQpXaGF0IGlzIHRoZSBtZWRpYW4gbGlmZSBleHBlY3RhbmN5IG9mIE9jZWFuaWE/DQpSb3VuZCB5b3VyIGFuc3dlciB0byB0aGUgbmVhcmVzdCBpbnRlZ2VyLg0KDQoNCg0KDQojIFF1ZXN0aW9uIDRhDQoNCllvdXIgdGFzayBpcyB0bw0KDQotIENvcHkgdGhlIGNvZGUgYmVsb3cgKE5PVEU6IGluY2x1ZGUgdGhlIHNldC5zZWVkISEhKSBpbnRvIGEgbm90ZWJvb2sNCi0gVXNlIGxlZnRfam9pbiB0byBtZXJnZSBtMSBhbmQgbTIgKGluIHRoYXQgb3JkZXIhKSBpbiB0byBhIGRhdGFmcmFtZSB3aXRoIHRoZSBuYW1lICJtMyINCg0KDQoNCmBgYHtyfQ0KDQpzZXQuc2VlZCgxMjMpDQoNCm0xIDwtIHRpYmJsZShpZCA9IHNhbXBsZSh4PSAxOjEwMCwgc2l6ZSA9IDcwLCByZXBsYWNlID0gVFJVRSkpICU+JQ0KICBtdXRhdGUoeCA9IHJub3JtKG4gPSBsZW5ndGgoaWQpLCBtZWFuID0gMCwgc2QgPSAxKSkNCg0KbTIgPC0gdGliYmxlKGlkID0gc2FtcGxlKHg9IDE6MTAwLCBzaXplID0gODAsIHJlcGxhY2UgPSBUUlVFKSkgJT4lDQogIG11dGF0ZSh5ID0gcm5vcm0obiA9IGxlbmd0aChpZCksIG1lYW4gPSAxMCwgc2QgPSA1ICkpDQoNCg0KYGBgDQoNCg0KDQoNCkhvdyBtYW55IG9ic2VydmF0aW9ucyAocm93cykgZG9lcyBtMyBoYXZlPw0KDQoNCiMjIFF1ZXN0aW9uIDRiDQoNCllvdXIgdGFzayBpcyB0byB1c2UgbTMgZnJvbSBxdWVzdGlvbiA0YSB0bw0KDQotIGNyZWF0ZSBhIGxvbmcgZGF0YWZyYW1lIG00IHdpdGggYSBuZXcgY29sdW0gIlZhciIgdGhhdCBpbmRpY2F0ZXMgd2hldGhlciB0aGUgcm93IGNvbmNlcm5lZCBzaG93cyBhIHZhbHVlIG9mICJ4IiBvciAieSIgYW5kIHRoZSB2YWx1ZXMgaW4gY29sdW1uICJWYWwiLg0KDQpTbyB5b3VyIGRhdGFmcmFtZSBzaG91bGQgbG9vayBsaWtlOg0KDQoNCnxpZHxWYXJ8VmFsfA0KfC0tLXwtLS18LS0tLXwNCnwzMXwgeHwgLTAuMTYzOTMxMHwNCnwzMXwgeXwgMTQuMzk2ODIwN3wNCnwuLi58Li4ufC4uLi58DQp8Li4uLnwuLi58Li4uLnwNCg0KDQotIFRoZW4gZGVsZXRlIGFsbCBOQSdzLg0KDQoNCkhvdyBtYW55IG9ic2VydmF0aW9ucyAocm93cykgZG9lcyBtNCBoYXZlPw0KDQoNCg0KDQojIFF1ZXN0aW9uIDUNCg0KDQpXaGF0IGRvZXMgdGhpcyBjb2RlIGRvPw0KDQpga25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBGQUxTRSlgDQoNCg0KYS4gVGhlIGNvZGUgbWFrZXMgc3VyZSB0aGF0IHRoaXMgY29kZSBjaHVuayB3aWxsIG5vdCBiZSBleGVjdXRlZA0KYi4gVGhlIGNvZGUgbWFrZXMgc3VyZSB0aGF0IGFsbCB0aGUgY29kZSBjaHVua3MgYWZ0ZXIgdGhpcyBjb21tYW5kIGluIHRoZSBSbWQgd2lsbCBub3QgYmUgZXhlY3V0ZWQNCmMuIFRoZSBjb2RlIG1ha2VzIHN1cmUgdGhhdCB0aGlzIGNvZGUgY2h1bmsgd2lsbCBub3QgYmUgc2hvd24gaW4gdGhlIG91dHB1dCBkb2N1bWVudCAoZS5nLiB0aGUgcGRmKQ0KZC4gVGhlIGNvZGUgbWFrZXMgc3VyZSB0aGF0IGFsbCB0aGUgY29kZSBjaHVua3MgYWZ0ZXIgdGhpcyBjaHVuayB3aWxsIG5vdCBiZSBzaG93biBpbiB0aGUgb3V0cHV0IGRvY3VtZW50IChlLmcuIHRoZSBwZGYpIA0KDQoNCg0KDQojIFF1ZXN0aW9uIDYNCg0KWW91ciB0YXNrIGlzIHRvDQoNCi0gb3BlbiBhIG5vdGVib29rDQotIHNpbXVsYXRlIHNvbWUgZGF0YToNCiAgICAtIFVTRSBgc2V0LnNlZWQoMTIzKWAgW1RoaXMgaXMgcmVhbGx5IGltcG9ydGFudCFdDQogICAgLSBnZW5lcmF0ZSBhbiB4LXZhcmlhYmxlIGluIGEgdGliYmxlIHdpdGggYSBub3JtYWwgZGlzdHJpYnV0aW9uIHdpdGggbWVhbiAxMDAsIGFuZCBzdGFuZGFyZCBkZXZpYXRpb24gMTAuIFdlIG5lZWQgMTAwMCBvYnNlcnZhdGlvbnMNCiAgICAtIG1ha2UgYSBuZXcgY29sdW1uIHkgd2l0aCB0aGUgZm9ybXVsYSAkbG9nKHgpICsgMzYgKiB4XjUkDQogICAgLSBjYWxjdWxhdGUgdGhlIG1lYW4gb2YgdGhlIHZhcmlhYmxlIHkuDQoNCg0KDQoNCiMgUXVlc3Rpb24gNw0KDQpDcmVhdGUgYSBmdW5jdGlvbiB0aGF0IGZvciB0aGUgbnVtYmVycyB4IHRvIHggKyAyICogJFxwaSQgY2FsbHMgdGhlIGZ1bmN0aW9uIGBzaW4oeClgIGFuZCBhZGRzIHRoZSByZXN1bHRzLg0KDQpUaGUgYW5zd2VyIHdoZW4geW91IGV4ZWN1dGUgeW91ciBmdW5jdGlvbiB3aXRoIHRoZSBhcmd1bWVudCAzIHNob3VsZCBiZSAwLjk4Nzg0MDENCg0KDQoNCg0K</div>
 
 
 

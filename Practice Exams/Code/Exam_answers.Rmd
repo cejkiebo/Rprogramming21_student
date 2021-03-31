@@ -14,6 +14,9 @@ library(readxl)
 library(writexl)
 library(palmerpenguins)
 library(gapminder)
+
+options(scipen = 999)
+
 ```
 
 # Introduction
@@ -317,7 +320,7 @@ set.seed(123)
   
 
 fd <- tibble(x= rnorm(n = 1000, mean = 100, sd = 10)) %>%
-  mutate(y = log(x) + 33 * x^5) %>%
+  mutate(y = sin(x^2) + 33 * x^4) %>%
   summarise(mean_y = mean(y))
   
 kableExtra::kable(fd)
@@ -326,11 +329,11 @@ kableExtra::kable(fd)
 ```
 
 
-## Assignment 7
+# Question 7
 
 Create a function that for the numbers x to x + 2 * $\pi$ calls the function `sin(x)` and adds the results.
 
-The answer should be 0.9878401
+The answer when you execute your function with the argument 3 should be 0.9878401
 
 
 ```{r}
@@ -344,6 +347,7 @@ my_func <- function(x){
     
     print(total)
   }
+  
   
   total
 }
