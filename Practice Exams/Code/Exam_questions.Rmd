@@ -44,7 +44,14 @@ b. Heart
 c. the letter "L"
 d. the number "1"
 
+```{r}
+Q1_xlsx <- read_xlsx("../Sourcedata/dataQ1.xlsx") %>%
+  filter(Group == "Group1")
 
+ggplot(Q1_xlsx, aes(x = Variable_1, y = Variable_2)) +
+  geom_point()
+```
+Answer B: Heart
 
 # Question 2
 
