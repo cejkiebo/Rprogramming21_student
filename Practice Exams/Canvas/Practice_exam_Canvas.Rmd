@@ -1,0 +1,316 @@
+---
+title: "Practice exam R"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(gapminder)
+```
+
+
+# Question 1
+
+Use the gapminder data and filter the rows with the year 1982.
+Hint: store the dataframe under another name, we need the total gapminder dataset later.
+
+Make a boxplot with 
+- on the x-axis continent
+- on the y-axis gdpPercap
+
+
+The outliers are represented as dots in the plot.
+
+How many outliers do you count? 
+
+
+Answer
+
+
+```{r}
+
+
+
+Q1 <- gapminder %>%
+  filter(year == 1982)
+
+ggplot(data = Q1, aes(x = continent, y = gdpPercap)) +
+  geom_boxplot()
+
+```
+
+There are 8 outliers visible.
+
+Question 2
+
+Please copy the following code.
+
+The relig_income dataset is part of the tidyverse package.
+
+
+```{r}
+Q2 <- relig_income
+
+
+
+```
+
+The columns in this dataset are counts of people (that filled in the questionnaire)
+Your assignment is to find the religion in this dataset with the highest total count. So you have to sum the values in the rows. 
+
+The idea of this question is to practice with the pivot_longer(), the group_by and summarise commands. In this case you could answer the question in a another way (do you see how?). However, to practice for the exam we encourage you to practice with the pivot_longer() and pivot_wider() commands.
+
+If you found the religion with the highest count: what is the number of people that filled in the questionnaire  for this religion? 
+
+
+ Answer
+
+```{r}
+Q2A <- Q2 %>%
+  pivot_longer(cols = 2:11, names_to = "income", values_to = "count") %>%
+  group_by(religion) %>%
+  summarise(total = sum(count)) %>%
+  filter(total == max(total))
+
+Q2A
+
+```
+Alternative answer
+
+```{r}
+
+
+Q2B <- Q2 %>%
+  rowwise(religion) %>%
+  mutate(Total_amount = sum(c_across(`<$10k`:`Don't know/refused`)))%>%
+  ungroup() %>%
+  filter(Total_amount == max(Total_amount))
+
+Q2B
+
+```
+
+
+# Question 3
+
+
+Please copy the code below. Don't forget to use the `set.seed(123)`. This code will generate a dataframe with 3 columns. Firm (indicated by a number), Prod_A (the amount of product A) and Prod_B (the amount of product B).
+
+The price of product A is 2 Euro and the price of product B is 6 Euro. You have to calculate the Revenue per firm.
+
+Which firm (number) has the lowest revenue?
+
+
+```{r}
+set.seed(123)
+
+Q3 <- tibble(Firm = 1:765,
+             Prod_A = sample(x = 35:37890, size = length(Firm), replace = FALSE),
+             Prod_B = sample(x = 35:37890, size = length(Firm), replace = FALSE)) 
+
+```
+
+Answer
+
+
+```{r}
+
+Q3A <- Q3 %>%
+  mutate(Revenue = Prod_A * 2 + Prod_B * 6) %>%
+  filter(Revenue == min(Revenue))
+
+Q3A
+
+```
+
+
+
+# Question 4
+
+
+In this question you will have to calculate a number. Do not forget to use `set.seed(123)`, because we are going to generate random numbers. If you do not use `set.seed(123)` your answer will be wrong.
+
+1. Create an empty vector with the name mean_vals.
+2. Then draw 50 samples of 5 observations from a normal distribution with mean 40 and standard deviation 80.
+3. calculate the mean of each sample of 5 observations and store this value in the empty vector (created in step 1). Your vector sd_vals should have 50 observations.
+
+
+What is the mean of the vector mean_vals? Round your answer to 1 decimal.
+
+
+Answer 
+
+```{r}
+set.seed(123)
+
+mean_vals <- c()
+
+for (i in 1:50){
+  
+  sample_something <- rnorm(5, mean = 40, sd = 80)
+
+  mean_vals[i] = mean(sample_something)
+  
+}
+
+Mean_value <- mean(mean_vals)
+
+round(Mean_value, 1)
+
+```
+
+
+# Question 5
+
+Please copy the code below. Please note we don't need to use the `set.seed()` command, because we don't have random variables.
+
+
+```{r}
+
+Q5 <- tibble(theta = seq(-2 * pi, 2 * pi, by = 0.01),
+             r = 4 * sin(4 * theta), 
+             x = r * cos(theta),
+             y = r * sin(theta))
+ 
+           
+             
+            
+
+```
+
+Your assignment is to make a lineplot with seperate lines per group (you can use color, group, or linetype) to this.
+
+
+Do you see:
+
+a. heart
+b. dragon
+c. flower
+d. letter M
+e. vertical line
+f. wave
+
+Answer
+
+```{r}
+ggplot(data = Q5, aes(x = x, y = y)) +
+  geom_point()
+```
+
+# Question 6
+
+
+With which symbol do you create a comment in a code chunk?
+
+Answerlist
+----------
+* `*`
+* `+`
+* `_`
+* `#`
+* `!`
+* `<-`
+
+ANSWER
+
+* `#`
+
+
+# Question 7
+
+Use the gapminder dataset to calculate the lowest life expectancy per continent for each year available in the dataset.
+
+In which year do you find the lowest life expectancy per continent?
+
+
+```{r}
+
+Q7A <- gapminder %>%
+  group_by(continent, year) %>%
+  summarise(Min_LE = min(lifeExp),  .groups = 'drop') %>%
+  ungroup()%>%
+  filter(Min_LE == min(Min_LE))
+
+Q7A
+
+# .groups = 'drop' prevents a "friendly warning" It is not necessary to use this command
+
+```
+
+
+# Question 8
+
+We will use the gapminder dataset again. We have run a regression and it returns the following best-fitting formula:
+
+LifeExpectance ~ -418.424259448 + 0.238982754011 * year + 0.000669732251291  * gdpPercap)
+
+We are going to look if this formula describes the data.
+
+1. make a new column Prediction in which you predict the lifeExpectancy with the formula above. To be sure we will use the formula:
+
+Prediction =  -418.424259448 + 0.238982754011 * year + 0.000669732251291  * gdpPercap)
+2. make a new column with the name SE where your calculate the difference between the Prediction and the actual lifeExpectancy. Square the difference. Formula step 2: (lifeExp - Prediction)^2
+3. Sum the squared differences from step 2, divide the sum by the number of observations in the dataframe and take the square root. Now you have calculated the RMSE (Root Mean Square Error.) 
+
+
+What is the RSME of our linear regression?
+
+
+Hints: 
+- you do not have to run a regression yourself
+- this question may appear difficult, but just follow the instructions step by step. We only have to use tidyverse commands.
+- the function to take a square root is `sqrt()`
+- Our model may not be that good after all
+
+Answer
+
+
+```{r}
+
+Q8 <- gapminder %>%
+  mutate(Prediction = -418.424259448 + 0.238982754011 * year + 0.000669732251291  * gdpPercap) %>%
+  mutate(SE = (lifeExp - Prediction)^2) %>%
+  summarise(RSME = sqrt(sum(SE)/length(SE)))
+
+
+
+
+Q8
+
+Answer8 <- round(Q8$RSME,1)
+Answer8
+
+```
+
+```{r}
+
+# If you want to know where the coefficients come from: We will not examine this!
+reg1 <- lm(lifeExp ~ year + gdpPercap, data = gapminder)
+
+summary(reg1)
+
+# To have a precise estimate we need less-rounded coefficients:
+
+print(coef(reg1)[1], digits = 12)
+print(coef(reg1)[2], digits = 12)
+print(coef(reg1)[3], digits = 12)
+
+```
+
+# Question 9
+
+What do you typically use a gitignore file for?
+
+Answerlist
+----------
+* For storing old code
+* For large datasets that you do not want to upload to github.com
+* For creating a new branch of a repo
+* For ignoring error messages
+
+
+BEGIN ANSWER
+
+* For large datasets that you do not want to upload to github.com
+
+END ANSWER
