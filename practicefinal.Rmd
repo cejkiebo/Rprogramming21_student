@@ -1,0 +1,103 @@
+---
+title: "Practice Final Exam"
+author: "Chris van den Kieboom"
+date: "5-6-2021"
+output: html_document
+---
+
+```{r}
+library(tidyverse)
+library(gapminder)
+```
+
+# Question 1
+
+```{r}
+df1 = gapminder %>%
+  filter(year == 1982)
+
+ggplot(df1, aes(x = continent, y = gdpPercap)) +
+  geom_boxplot()
+```
+
+# Question 2
+
+```{r}
+Q2 <- relig_income
+
+pivot_longer(Q2, c(-religion)) %>%
+  group_by(religion) %>%
+  summarise(val = sum(value))
+
+```
+
+# Question 3
+
+```{r}
+set.seed(123)
+
+Q3 <- tibble(Firm = 1:765,
+             Prod_A = sample(x = 35:37890, size = length(Firm), replace = FALSE),
+             Prod_B = sample(x = 35:37890, size = length(Firm), replace = FALSE)) 
+
+Q3 %>%
+  mutate(revenue = 2 * Prod_A + 6 * Prod_B) %>%
+  arrange(revenue)
+```
+
+# Question 4
+
+```{r}
+set.seed(123)
+
+mean_vals <- c()
+
+for (i in 1:50) {
+  mean_vals[i] = mean(rnorm(5,40,80))
+}
+
+mean(mean_vals)
+```
+
+# Question 5
+
+```{r}
+Q5 <- tibble(theta = seq(-2 * pi, 2 * pi, by = 0.01),
+             r = 4 * sin(4 * theta), 
+             x = r * cos(theta),
+             y = r * sin(theta))          
+
+#ggplot(Q5, aes(x = x,
+#               y = y,
+#               colour = theta)) +
+#  geom_line()
+
+#Q5 %>%
+#  pivot_longer(c(-theta)) %>%
+#  ggplot(aes(x = theta,
+#             y = value,
+#             colour = name)) +
+#    geom_line()
+
+ggplot(Q5, aes(x = x, y = y)) +
+  geom_point()
+```
+
+#Question 7
+
+```{r}
+gapminder %>%
+  group_by(continent, year) %>%
+  summarise(minLifeExp = min(lifeExp)) %>%
+  arrange(minLifeExp)
+```
+
+# Question 8
+
+```{r}
+gapminder %>%
+  mutate(Prediction =  -418.424259448 + 0.238982754011 * year + 0.000669732251291  * gdpPercap) %>%
+  mutate(SE = (lifeExp - Prediction)^2) %>%
+  summarise(RMSE = sqrt(sum(SE)/n()))
+```
+
